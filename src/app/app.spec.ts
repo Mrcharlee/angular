@@ -1,23 +1,24 @@
 import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { LayoutComponent } from './home/layout';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('App', () => {
+describe('LayoutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [LayoutComponent, RouterTestingModule],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('should create the layout component', () => {
+    const fixture = TestBed.createComponent(LayoutComponent);
+    const component = fixture.componentInstance;
+    expect(component).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(App);
+  it('should render router outlet', () => {
+    const fixture = TestBed.createComponent(LayoutComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, HIMS');
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });
